@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import AppService from './AppService'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class StrInput extends React.Component<string, string> {
+  constructor(props: string) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = "";
+  }
+
+
+  handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+
+    let input = e.target.value
+    this.setState(input)
+    AppService.getRvrsStr(input)
+    .then(rez => this.setState( rez ))
+    
+  }
+
+  render() {
+    const str = "";
+    return (
+      <fieldset>
+        {/* <input value={str} onChange={this.handleChange} /> */}
+        <h1>{str}</h1>
+      </fieldset>
+    );
+  }
 }
 
-export default App;
+export default StrInput;
