@@ -10,10 +10,5 @@ export default class AppService {
 
     }
 
-    public static async getRvrsStrA(input: string) {
-        const response = await axios.get('/api/rvstr/${input}');
-        return response.data;
-    }
-
 
 }
