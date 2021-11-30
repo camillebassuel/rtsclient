@@ -31,8 +31,9 @@ class StrInput extends React.Component<{}, StateType> {
     const mstr = this.state.mchaine;
     return (
       <fieldset>
+        <h1>please type some text in the box below</h1>
         <input value={str} onChange={this.handleChange} />
-        <h1>{mstr}</h1>
+        <p>{mstr}</p>
       </fieldset>
     );
   }
