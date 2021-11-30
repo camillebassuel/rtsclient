@@ -4,6 +4,7 @@ import AppService from './AppService'
 
 interface StateType {
   chaine : string;
+  mchaine : string;
 }
 
 
@@ -11,7 +12,7 @@ class StrInput extends React.Component<{}, StateType> {
   constructor(props: any){
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.state = { chaine  :"ttest"}
+    this.state = { chaine  :"test", mchaine : "tset" }
   }
 
   
@@ -21,16 +22,17 @@ class StrInput extends React.Component<{}, StateType> {
     // alert(input)
     // this.setState({chaine: input});
     AppService.getRvrsStr(input)
-    .then(rez =>  this.setState({chaine: rez}) )
+    .then(rez =>  this.setState({chaine:input , mchaine: rez.toString() }) )
 
   }
 
   render() {
     const str = this.state.chaine;
+    const mstr = this.state.mchaine;
     return (
       <fieldset>
         <input value={str} onChange={this.handleChange} />
-        <h1>{str}</h1>
+        <h1>{mstr}</h1>
       </fieldset>
     );
   }
